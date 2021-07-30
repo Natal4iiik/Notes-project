@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new note</title>
+</head>
+<body>
+<form th:action="@{/create}" th:object="${noteData}" method="POST">
+<div><input type="text" placeholder="Title" th:field="*{title}"></div>
+    <div><input type="text" placeholder="Text" th:field="*{text}"></div>
+    <div><input type="category" placeholder="Category" th:field="*{category}"></div>
+    <div><input type="submit" value="Create"></div>
+</form>
+</body>
+</html>
