@@ -7,7 +7,7 @@
 <body>
 <form th:action="@{/create}" th:object="${noteData}" method="POST">
 <div><input type="text" placeholder="Title" th:field="*{title}"></div>
-    <div><input type="text" placeholder="Text" th:field="*{text}"></div>
+    <div><textarea placeholder="Text" th:field="*{text}"></textarea></div>
     <div><input type="category" placeholder="Category" th:field="*{category}"></div>
     <div><input type="submit" value="Create"></div>
 </form>

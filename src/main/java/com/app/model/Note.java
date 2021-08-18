@@ -10,17 +10,22 @@ public class Note {
     private User author;
     private String category;
     private LocalDate localDate;
+    private String status;
 
 
-    public Note(String title, String text, User author, String category, LocalDate localDate) {
+    public Note(String title, String text, User author, String category, LocalDate localDate, String status) {
         this.title = title;
         this.text = text;
         this.author = author;
         this.category = category;
         this.localDate = localDate;
+        this.status = status;
     }
 
     public Note() {
+    }
+
+    public Note(String title, String text, User user, Category category) {
     }
 
     public long getId() {
@@ -63,7 +68,7 @@ public class Note {
         this.category = category;
     }
 
-    public LocalDate getLocalDate(Date localdate) {
+    public LocalDate getLocalDate(LocalDate localDate) {
         return localDate;
     }
 
@@ -71,4 +76,11 @@ public class Note {
         this.localDate = localDate;
     }
 
-}
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    }

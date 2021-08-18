@@ -18,7 +18,7 @@ public class NoteService {
     @Autowired
     private NoteDao noteDao;
 
-    public List<Note> getNotes(int count) {
+    public List<Note> getNotes() {
 //        User author = new User("Nata", "Hama", "26565678", "nata@gmail.com");
 //
 //        List<Note> notes = new ArrayList<>();
@@ -35,7 +35,7 @@ public class NoteService {
     public List<Note> filterByUser(User author) {
         List<Note> notes = new ArrayList<>();
 
-        for (Note note : getNotes(15)) {
+        for (Note note : getNotes()) {
             if (note.getAuthor() == author) {
                 notes.add(note);
             }
@@ -44,10 +44,12 @@ public class NoteService {
     }
 
     public Note validateNote(Note note) {
-        if (note.getTitle().isEmpty() || note.getText().isEmpty()) {
-            return null;
+        if (!note.getTitle().isEmpty() && !note.getText().isEmpty() && !note.getCategory().isEmpty()) {
+        noteDao.storeNote(note);
+            return note;
         }
 
-        return note;
+        noteDao.storeNote(note);
+        return null;
     }
 }

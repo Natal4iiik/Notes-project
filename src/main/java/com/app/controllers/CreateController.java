@@ -23,8 +23,15 @@ public class CreateController {
     @PostMapping("/create")
     public String createNote(@ModelAttribute Note note, Model model) {
         Note validateNote = noteService.validateNote(note);
-        model.addAttribute("status", validateNote == null ? "error" : "success");
-        model.addAttribute("note", validateNote == null ? note : validateNote);
-    return "successCreate";
+        if (validateNote == null) {
+            return "redirect':/notes";
+        } else {
+//            model.addAttribute("status", validateNote == null ? "error" : "success");
+//            model.addAttribute("note", validateNote == null ? note : validateNote);
+//            return "successCreate";
+            model.addAttribute("error", validateNote);
+            model.addAttribute("note", note);
+            return "create";
+        }
     }
 }
